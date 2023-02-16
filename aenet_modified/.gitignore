@@ -1,0 +1,9 @@
+*~
+*.so
+*.egg-info
+TAGS
+run
+debug
+__pycache__
+core.c
+build

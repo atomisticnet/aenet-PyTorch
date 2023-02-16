@@ -1,0 +1,29 @@
+TRAININGSET TiO.train.ascii
+TESTPERCENT 10
+ITERATIONS  10000
+ITERWRITE   100
+BATCHSIZE   128
+
+NPSEED 1
+PHSEED 2
+
+FORCES
+alpha=0.1
+
+
+MEMORY_MODE cpu
+
+SAVE_ENERGIES
+SAVE_FORCES
+VERBOSE
+
+METHOD
+method=adamw   lr=0.0001
+
+REGULARIZATION 0.001
+
+NETWORKS
+! atom   network         hidden
+! types  file-name       layers  nodes:activation
+  Ti     Ti.pytorch.nn    2    5:tanh    5:tanh
+  O       O.pytorch.nn    2    5:tanh    5:tanh

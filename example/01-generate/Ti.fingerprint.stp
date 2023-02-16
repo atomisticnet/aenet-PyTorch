@@ -1,0 +1,14 @@
+DESCR
+ Descriptor for Ti
+END DESCR
+
+ATOM Ti
+
+ENV 2
+Ti
+O
+
+RMIN 0.35d0
+
+BASIS type=Chebyshev
+radial_Rc = 6.5  radial_N = 20 angular_Rc = 5.  angular_N = 6
