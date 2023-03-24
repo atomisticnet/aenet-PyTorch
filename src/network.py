@@ -18,23 +18,23 @@ class NetAtom(nn.Module):
 		self.input_size = input_size
 		self.hidden_size = hidden_size
 		self.species = species
-		self.activations = activations
+		self.active_names = activations
 		self.alpha = torch.tensor(alpha)
 		self.device = device
 
 		N_fun = [len(hidden_size[i])+1 for i in range(len(species)) ]
 	
-		self.tanh = nn.Tanh()
-		self.relu = nn.LeakyReLU()
+		self.linear  = nn.Identity()
+		self.tanh    = nn.Tanh()
 		self.sigmoid = nn.Sigmoid()
 		self.activations = []
 		for i in range(len(species)):
 			aux = []
 			for j in range(len(hidden_size[i])):
+				if activations[i][j] == "linear":
+					aux.append(self.linear)
 				if activations[i][j] == "tanh":
 					aux.append(self.tanh)
-				if activations[i][j] == "relu":
-					aux.append(self.relu)
 				if activations[i][j] == "sigmoid":
 					aux.append(self.sigmoid)
 			self.activations.append(aux)

@@ -32,6 +32,11 @@ def save_network_iesp(model, iesp, f):
 	nvalues += nnodes[-1]
 
 	fun = [1 for i in range(len(model.hidden_size[iesp]))]
+	for i in range(len(fun)):
+		if model.active_names[iesp][i] == "linear":  fun[i] = 0
+		if model.active_names[iesp][i] == "tanh":    fun[i] = 1
+		if model.active_names[iesp][i] == "sigmoid": fun[i] = 2
+
 	fun.append(0)
 
 	W = []
