@@ -84,6 +84,9 @@ def step_valid_any(net, valid_data, E_scaling, input_size, max_nnb):
 	E_error = 0.0
 	F_error = 0.0
 
+	if len(valid_data) == 0:
+		return valid_error, E_error, F_error
+
 	for i_batch, data_batch in enumerate(valid_data):
 		"""
 		data_batch[10+0]  :: group_descrp

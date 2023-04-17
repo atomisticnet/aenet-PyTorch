@@ -31,7 +31,8 @@ def get_N_batch(len_dataset, batch_size):
 	residue = len_dataset - N_batch*batch_size
 
 	if residue >= int(batch_size/2) or N_batch == 0:
-		N_batch += 1
+		if residue != 0:
+			N_batch += 1
 
 	return N_batch
 

@@ -61,6 +61,9 @@ class StructureDataset(object):
 			sh = torch.Tensor(sfval_avg[iesp]).double()
 			sc = 1/torch.sqrt(torch.Tensor(sfval_cov[iesp]).double() - sh**2)
 
+			# Check if scale is finite. If infite it means that some of the values are always 0
+			sc[sc == float("Inf")] = 0.0
+
 			shift.append(sh)
 			scale.append(sc)
 

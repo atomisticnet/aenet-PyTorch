@@ -30,33 +30,40 @@ class PrepDataloader(object):
 
 		# Generate batches
 		if generate:
-			if self.sampler == None:
-				self.sampler = list(range(len(dataset)))
-				np.random.shuffle(self.sampler)
 
-			self.N_batch = N_batch
-			self.indexes = self.get_batch_indexes_N_batch()
-			self.initialize()
-
-			if memory_mode == "disk":
-				if not os.path.exists("tmp_batches"):
-					os.makedirs("tmp_batches")
-
-			if train_forces:
-				for ibatch in range(self.N_batch):
-					self.prepare_batch_forces(ibatch)
-					
-					if memory_mode == "disk":
-						self.save_batch(ibatch)
-						self.del_batch(ibatch)
+			if N_batch == 0:
+				self.N_batch = N_batch
+				self.indexes = np.array([])
+				self.initialize()
 
 			else:
-				self.prepare_batches()
+				if self.sampler == None:
+					self.sampler = list(range(len(dataset)))
+					np.random.shuffle(self.sampler)
+
+				self.N_batch = N_batch
+				self.indexes = self.get_batch_indexes_N_batch()
+				self.initialize()
 
 				if memory_mode == "disk":
+					if not os.path.exists("tmp_batches"):
+						os.makedirs("tmp_batches")
+
+				if train_forces:
 					for ibatch in range(self.N_batch):
-						self.save_batch(ibatch)
-						self.del_batch(ibatch)
+						self.prepare_batch_forces(ibatch)
+						
+						if memory_mode == "disk":
+							self.save_batch(ibatch)
+							self.del_batch(ibatch)
+
+				else:
+					self.prepare_batches()
+
+					if memory_mode == "disk":
+						for ibatch in range(self.N_batch):
+							self.save_batch(ibatch)
+							self.del_batch(ibatch)
 
 
 	def __len__(self):
