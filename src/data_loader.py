@@ -384,7 +384,6 @@ class PrepDataloader(object):
 				aux_indices.append(torch.tensor([auxx]))
 			else:
 				aux_indices.append(auxx)
-				
 			auxn = len(aux_indices[i_atom])
 			N_max = max(N_max,auxn)
 

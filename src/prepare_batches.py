@@ -79,6 +79,7 @@ def select_batch_size(tin, list_structures_energy, list_structures_forces):
 
 	if N_batch_train > N_data_F:
 		N_batch_train = N_data_F
+		
 	if N_batch_valid > N_data_F:
 		N_batch_valid = N_data_F
 
