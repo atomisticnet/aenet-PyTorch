@@ -386,7 +386,7 @@ class PrepDataloader(object):
 				aux_indices.append(auxx)
 			auxn = len(aux_indices[i_atom])
 			N_max = max(N_max,auxn)
-
+			
 
 		group_indices_F = torch.zeros((N_atom_batch, N_max),dtype=int) - 1
 		for i_atom in range(N_atom_batch):
