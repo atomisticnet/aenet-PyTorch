@@ -372,13 +372,22 @@ class PrepDataloader(object):
 
 		group_nblist_flat = torch.where( group_nblist_flat < 0, -1, group_nblist_flat )
 
+
 		N_max = 0
 		aux_indices = []
 		for i_atom in range(N_atom_batch):
 			mask = (group_nblist_flat == i_atom)
-			aux_indices.append(mask.nonzero().squeeze())
+
+			#aux_indices.append(mask.nonzero().squeeze())
+			auxx = mask.nonzero().squeeze()
+			if auxx.dim() == 0:
+				aux_indices.append(torch.tensor([auxx]))
+			else:
+				aux_indices.append(auxx)
+				
 			auxn = len(aux_indices[i_atom])
 			N_max = max(N_max,auxn)
+
 
 		group_indices_F = torch.zeros((N_atom_batch, N_max),dtype=int) - 1
 		for i_atom in range(N_atom_batch):
