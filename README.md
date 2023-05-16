@@ -1,5 +1,12 @@
+
 ænet-PyTorch
-============
+=====================
+
+If you make use of the ænet-PyTorch interface, please cite the following reference:
+
+**J. Lopez-Zorrilla<super>*</super>**, X.M. Aretxabaleta, I.W. Yeu, I. Etxebarria, H. Manzano, **N. Artrith<super>*</super>**, ænet-PyTorch: A GPU-Supported Implementation for Machine Learning Atomic Potentials Training, J. Chem. Phys. **158**, 164105 (2023). DOI: https://doi.org/10.1063/5.0146803 **OpenAccess**
+
+<super>*</super>Contact:  jon.lopezz@ehu.eus or n.artrith@uu.nl
 
 ## **ænet**
 
@@ -11,6 +18,9 @@ The Atomic Energy NETwork (**ænet**) package (http://ann.atomistic.net) is a co
 ## **ænet-PyTorch**
 
 **ænet-PyTorch** is an extension of that code to allow GPU-support for the training process of **ænet**, substituting the `train.x` training step. It is enterily written in PyTorch and includes new features that the previous code did not: the ability to fit reference forces in addition to energies with GPU support. **ænet-PyTorch** is fully compatible with all the **ænet** tools: interfaces with LAMMPS and TINKER, and ASE.
+
+**M.S. Chen<super>*</super>**, T. Morawietz, H. Mori, T.E. Markland, **N. Artrith<super>*</super>**, AENET-LAMMPS and AENET-TINKER: Interfaces for Accurate and Efficient Molecular Dynamics Simulations with Machine Learning Potentials, J. Chem. Phys. **155**, 074801 (2021). doi: https://doi.org/10.1063/5.0063880
+
 
 
 # Installation
