@@ -243,6 +243,7 @@ program generate
   !--------------- write pytorch force training header ----------------!
   
   if (inp%pyo_forces) then
+    u_pyo = io_unit()
     call pyo_write_init(u_pyo, trim(inp%outFileName)//".forces")
     call pyo_write_header_info(u_pyo, inp%nStrucs)
     call pyo_select_force_structures(inp%nStrucs, inp%pyo_forces_percent, struc_write_force)
